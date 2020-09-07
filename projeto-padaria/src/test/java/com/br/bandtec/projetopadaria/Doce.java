@@ -18,7 +18,7 @@ public class Doce extends Comida {
     //metodos
     @Override
     public Double getValorComida() {
-        return (peso / 50) * ( 5.0 * quantidade);
+        return (peso / 100 + 5.0 ) * quantidade;
 
     }
 

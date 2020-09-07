@@ -6,23 +6,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/carrinho")
+@RequestMapping("/carrinhos")
 
 public class PadariaController {
 
     CaixaPadaria carrinho = new CaixaPadaria();
 
-    @PostMapping("/adicionar/massa")
+    @PostMapping("/massas")
     public void adicionaMassa(@RequestBody Massa massa ){
         carrinho.adicionaComida(massa);
     }
 
-    @PostMapping("/adicionar/doce")
+    @PostMapping("/doces")
     public void adicionaDoce(@RequestBody Doce doce ){
         carrinho.adicionaComida(doce);
     }
 
-    @PostMapping("/adicionar/salgado")
+    @PostMapping("/salgados")
     public void adicionaSalgado(@RequestBody Salgado salgado ){
         carrinho.adicionaComida(salgado);
     }
@@ -33,7 +33,13 @@ public class PadariaController {
 
     }
 
-    @DeleteMapping("/remover/{id}")
+    @GetMapping("/{id}")
+    public List<Comida> mostrarCarrinhoId(){
+        return carrinho.getCompras();
+
+    }
+
+    @DeleteMapping("/{id}")
     public void removerCompra(@PathVariable Integer id){
         carrinho.removerCompra(id);
 
@@ -41,21 +47,21 @@ public class PadariaController {
     }
 
 
-    @PutMapping("/alterar/massa/{id}")
+    @PutMapping("/massas/{id}")
     public void alteraMassa(@PathVariable Integer id, @RequestBody  Massa massa){
         carrinho.alteraMassa(id ,massa);
 
     }
 
 
-    @PutMapping("/alterar/doce/{id}")
+    @PutMapping("/doces/{id}")
     public void alteraDoce(@PathVariable Integer id, @RequestBody  Doce doce){
         carrinho.alteraDoce(id ,doce);
 
     }
 
 
-    @PutMapping("/alterar/salgado/{id}")
+    @PutMapping("/salgados/{id}")
     public void alteraSalgado(@PathVariable Integer id, @RequestBody  Salgado salgado){
         carrinho.alteraSalgado(id ,salgado);
 

@@ -32,7 +32,6 @@ public class CaixaPadaria {
     }
 
     public String calculaValorTotalComida(){
-
         Double valor = 0.0;
     for (Padaria p : compras ){
         valor += p.getValorComida();
